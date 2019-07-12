@@ -1,2 +1,7 @@
-i need a dream how are you? ggggg
+<<<<<<< HEAD
+i need a dream how are you? g
 
+=======
+i need a dream how old are you?
+ggfdgdfgtg
+>>>>>>> dev
