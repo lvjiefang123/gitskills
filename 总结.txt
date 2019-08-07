@@ -1,0 +1,200 @@
+************************************************java********************
+一。post和get的区别？
+1.浅一点的说：post通过request body进行传递参数，get把参数放到url中传递参数。
+GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留
+2.更深一点说：post和get本质上都是tcp连接，但是由于http的规定服务器和浏览器的限制导致他们应用过程中体现了一些不同
+简单些说也就是post会产生两个tcp数据包get产生一个数据包
+二。http和tcp协议
+http针对应用层tcp针对传输层二者没有可比性‘
+http面向对象的协议针对应用层，他有五点
+1.支持客户/服务器模式
+2.简单快速 ：客户向服务器请求服务时，只需传送请求方法和路径，至于快速因为http
+规模比较小因而通信速度很快
+3灵活：
+4.无连接
+5无状态
+三，数据库的优化
+1.选用最合适的字段属性：比如你要是建一个班级表选用的是char(500)完全没必要的浪费空间，甚至设成varchar不如设成char(5)。还有一点就是提高性能 把字段尽量设成not null 这样执行的时候就不会比较null的啦
+2.用join连接代替子查询
+3.事务确保对两张表操作时成功都成功失败都失败保致一致性
+4.使用外键
+5.使用索引
+四，在mysql中取数据？
+例如：
+select * from classes order by cid  limit 8; 
+五。单例模式？
+分为懒汉和饿汉
+创建个Singleton 类然后在执行getInstance（）方法 然后就涉及到线程安全啦，何为线程线程就是最小的执行单位
+一个进程包含一个或多个线程
+六。spring，springmvc工作原理
+springmvc其实是一种框架他也属于spring与spring不同在于他又和struts2一样有mvc的设计模式，
+关于springmvc工作原理他有几个组件
+前端控制器 dispatcherservlet
+处理器（Handler）：（需要程序员去写代码处理逻辑的）
+处理器映射器 handlermapping
+处理器适配器
+视图解析器
+其中核心控制器是dispatcherservlet，他运行的原理是
+用户发送请求之前端控制器DispatcherServlet，DispatcherServlet找到处理器，处理器通过xml或注解进行查找，找
+到处理器映射器，处理器映射器向前端控制器返回执行链，然后前端控制器调用处理器适配器执行处理器，处理器向
+处理器适配器返回ModelAndView，然后前端控制器调用视图解析器，视图解析器向前端控制器返回view，前端控制器进行渲染返还给用户
+七，懒汉和饿汉的区别？
+1.懒汉是延时加载，需要它时才创建对象，线程不安全，要想线程安全需要加synchronized才能线程安全
+2.创建类的时候就创建了对象，线程安全
+八，ioc和aop的理解？
+1.ioc是控制反转也叫依赖注入，它用来降低计算机代码间的耦合度，其实它是生产ben和管理ben的容器
+2.aop面向切面将程序中交叉的业务逻辑，封装成一个切面，然后注入到目标逻辑中去
+九，session和cookie的区别？
+session是将值存在服务器端，他是不限量安全的
+cookie是将值存在浏览器端，他是限制大小的，不安全的。
+十，什么是连接池？
+连接池用于创建和管理数据库的缓冲池技术，缓冲池中的链接可以被任何需要他的线程使用，当一个线程需要他时
+就可以拿出来使用，用完后在放回去等待其他的线程调用
+十一，重写和重载的区别
+重载：在同一个类中，方法的名字相同，但是参数个数、参数类型或返回值类型不同；
+重写：子类和父类之间的关系，重写了父类的方法，但参数个数、参数类型和返回值
+类型必须相同。同时，重写的方法的访问权限范围必须>=父类方法（public>protected>default>private），重写方法抛出的异常范围不能大于父类方法。
+********************************angular,ng-alain,ng-zorro***********
+1.组件是 Angular 应用中的基本构造块。 它们在屏幕上显示数据，监听用户输入，并且根据这些输入执行相应的动作
+2.双花括号语法是 Angular 的插值绑定语法
+3. styles.css文件， 以把全应用级别的样式放进去
+4.ngOnInit 是一个生命周期钩子，Angular 在创建完组件后很快就会调用 ngOnInit。这里是放置初始化逻辑的好地方。
+5.在 Angular 中，我们可以通过 Component 装饰器和自定义组件类来创建自定义组件
+6.管道把数据作为输入，然后转换它，给出期望的输出
+7.uppercase 管道 是格式化字符串、金额、日期和其它显示数据的好办法
+8.[(ngModel)] 是 Angular 的双向数据绑定语法。从 hero.name 属性流动到 textbox，并且从 textbox 流回到 hero.name 。
+9. FormsModule：导出模板驱动表单所需的提供商和指令，使其可用于导入了该模块的 NgModule 中。
+10.Angular 需要知道如何把应用程序的各个部分组合到一起，以及该应用需要哪些其它文件和库。 这些信息被称为元数据（metadata）。
+有些元数据位于 @Component 装饰器中，你会把它加到组件类上。 另一些关键性的元数据位于 @NgModule 装饰器中。
+最重要的 @NgModule 装饰器位于顶级类 AppModule 上。
+Angular CLI 在创建项目的时候就在 src/app/app.module.ts 中生成了一个 AppModule 类。 这里也就是你要添加 FormsModule 的地方。
+11. AppModule 声明了应用中的所有组件
+12.，字符串 "let hero of heroes" 的含义是：
+取出 heroes 数组中的每个英雄，把它存入局部变量 hero 中，并在每次迭代时对模板 HTML 可用
+13问题？
+往类中添加一个 heroes 属性，这样可以暴露出这些英雄，以供绑定。  heroes = HEROES;
+14.你用属性绑定语法来让父组件 HeroesComponent 可以控制子组件 HeroDetailComponent。
+你用 @Input 装饰器来让 hero 属性可以在外部的 HeroesComponent 中绑定。
+15.组件不应该直接获取或保存数据，它们不应该了解是否在展示假数据。 它们应该聚焦于展示数据，而把数据访问的职责委托给某个服务。
+16.路由定义 会告诉路由器，当用户点击某个链接或者在浏览器地址栏中输入某个 URL 时，要显示哪个视图。
+典型的 Angular 路由（Route）有两个属性：
+path：一个用于匹配浏览器地址栏中 URL 的字符串。
+component：当导航到此路由时，路由器应该创建哪个组件。
+Observable 是 RxJS 库中的一个关键类。
+17{ path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+一,路由
+<router-outlet></router-outlet><!--动态加载 -->
+二，angular数据绑定
+1.单项绑定：控制文件（.ts）向模板文件(.html)赋值，或.ts向.html赋值
+2.双向绑定:     .ts和.html绑定的值同时改变
+3.类绑定:
+4.样式绑定
+5.html基本属性绑定 atter.
+三.61103380
+// "../node_modules/_bootstrap@3.3.7@bootstrap/dist/css/bootstrap.min.css"
+
+https://gitee.com/labourtech/ythpt.git
+上面是 sf做
+下面是 sv做 用
+********************黑窗口建文件**************************
+npm start 开启
+ng g ng-alain:module ylao新文件夹
+ng g ng-alain:list yxian -m=ylao新文件下内的新文件夹
+st 表格 ngfor循环
+
+
+jsonschema是描述你的JSON数据格式;JSON模式(应用程序/模式+ JSON)有多种用途，其中之一就是实例验证。验证过程可以是交互式或非交互式的。例如，应用程序可以使用JSON模式来构建用户界面使互动的内容生成除了用户输入检查或验证各种来源获取的数据。
+。。。
+ngOnInit：页面加载的时候优先加载它
+formData：表单默认值
+getValue	根据路径获取表单元素当前值	any
+setValue	根据路径设置某个表单元素属性值，若路径不存在会产生异常	this
+ 获取接口全部数据  this.formData = resdata.message.data.subject;
+取出sf内一条数据 let aac147=  resdata.message.data.subject.aac147;
+重温Angular获得知识点
+载荷 ($event)
+上下文包括 formProperty 属性，它是传递数据的唯一中间层，因此维护 formProperty.value 是唯一与自定义组件通信的媒介。
+
+JSON.stringify() 方法是将一个JavaScript值(对象或者数组)转换为一个 JSON字符串，如果指定了replacer是一个函数，则可以替换值，或者如果指定了replacer是一个数组，可选的仅包括指定的属性。
+
+*ngIf和css内display区别？
+*ngif当设置为false时会从DOM里移除元素，其实日志会发生变化
+display 只是隐藏日志不会发生变化
+******
+上面指令名称有前缀星号（*），星号是一个语法糖，简化了 ngIf 和 ngFor 二者的读写，在模板引擎里最后还是会转换成 <template> 模式。
+
+*******************************eg:***************************************
+  <!--  <ng-template #tab>
+        <button (click)="add()" nz-button nzType="primary" [disabled]='!sf.valid'>查询</button>
+         disabled 吧button变成不可选
+        && this.pd.a.Length>=3
+        
+</ng-template>-->
+
+
+
+********************************Git & GitHub 总结********************
+git命令： 
+1.mkdir fileName 创建一个空目录， ls -ah 查看该目录是否含有 .git文件
+ 2. git init 吧目录变成git管理的仓库
+3.生成的.git文件 不算工作区 而是GIT的版本库 ，Git文件有stage（或者index）的暂存区
+4.git add FileName 一个一个添加文件 （或者git add ./，即添加所有文件） ，就是将工作区内容添加到暂存区
+5.git commit -m “描述”将暂存区内容放到所在分支 ,-m 后面是提交的描述 
+6.vi FileName 编辑文件 和 修改文件 都可以 
+7.git status 是看仓库的状态 git diff 可以看修改的内容
+版本回退：
+8.git log 查看历史纪录，显示从最近到最远的提交日志，如果嫌输出信息太多，看得眼花缭乱的，可以试试加上--pretty=oneline参数，你看到的一大串类似1094adb...的是commit id（版本号）
+9.git reset --hard HEAD^  回退到上一个版本，HEAD^（上个版本）， HEAD^^（上上个版本）……HEAD~100 表示版本 还可以 git reset --hard <commit id>表示回溯到当前版本
+10.git reflog用来记录你的每一次命令 可以看到 commit id 号
+11. git checkout -- FileName 表示 工作区 的文件修改全部撤销 （注意 -- 前面 一个空格 后面一个空格）
+12. rm FileName 删除工作区的文件 ，git rm FileName 删除暂存区的文件
+13.git --version 查看 git版本
+远程仓库：
+14.第一步创建SSH key   命令 ssh-keygen -t rsa -C "youremail@example.com" ，生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件
+15.git remote add origin(远程仓库Name) ssh/http 地址 ，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库
+16.git push -u  origin master ,第一次连接远程仓库时必须加-u这一参数 这是吧本地master分支和远程的master分支联系起来下次只需要 git push origin master 就 可以了
+17.git clone ssh/http地址 ,git clone克隆一个本地库	
+分支管理：
+创建与合并分支
+18:git branch <name>创建分支 也可以 git checkout -b <name>表示创建并切换
+19：git checkout <name> 切换分支
+20:git branch 查看分支 有*号表示当前分支位置
+21:git merge <name> 合并分支
+22: git branch -d <name> 删除分支
+解决冲突
+23:用git log --graph命令可以看到分支合并图。
+24:https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344
+
+
+分支管理策略
+25:--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+BUG分支
+26：git stash 把没有完成的工作现场隐藏
+27：git stash 可以查看被隐藏的工作现场
+28：git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除,删除eg：stash@{0}: WIP on dev: f52c633 add merge
+29：git stash pop，恢复的同时把stash内容也删了
+30：分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的-D参数,git branch -D <name>
+多人协作开发
+31:git remote 查看远程仓库的信息，git remote -v显示更详细的信息
+32:向远程仓库推送分支 git push orign(远程仓库名字) <name(分支名字)>
+33:rebase操作可以把本地未push的分叉提交历史整理成直线，git rebase
+标签管理:
+
+
+创建标签
+34：git tag <tagname>用于创建一个标签，默认为HEAD(也就是指针指向的分支的commit id),也可以指定一个 commit id
+35:git tag -a <tagname> -m "说明信息"  ,可以指定标签信息
+36:git tag 查看所有标签
+37:git show <tagename> 更加详细的查看标签信息
+38:git tag -d <tagname> 删除标签
+39:git push origin <tagname>可以向远程仓库推送一个本地标签(origin是远程仓库的名字可以用git remote命令查看 )
+40:git push origin --tags 把所有未推送的tag标签推送到远程仓库
+41：命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+
+ 补充：
+42：git pull 拉取一个分支的信息  拉取之前先  git branch --set-upstream-to=origin/<branch> <当前branch>  ，追踪下 你要拉取的branch
+43：git push origin(远程仓库的名字) <branch> ，把代码提交到远程分支
+
+
+
+
